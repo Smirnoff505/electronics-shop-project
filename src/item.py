@@ -37,25 +37,17 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
-        result = []
         with open('../src/items.csv',
                   newline='', encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                values = row['name'], float(row['price']), int(row['quantity'])
-                result.append(values)
-            cls.all = result
+                new_instance = cls(row['name'], float(row['price']), int(row['quantity']))
+                cls.all.append(new_instance)
+
 
     @staticmethod
     def string_to_number(number_str: str):
-        num = []
-        for letter in number_str:
-            if letter.isdigit():
-                num.append(letter)
-            else:
-                break
-        number_int = int(''.join(num))
-        return number_int
+        return int(float(number_str))
 
     @property
     def name(self):
