@@ -29,3 +29,17 @@ def test_string_to_number():
 def test_instantiate_from_csv():
     Item.instantiate_from_csv()
     assert len(Item.all) == 5
+
+
+item2 = Item("TV", 100000, 10)
+item3 = Item("Keyboard", 5000, 5)
+
+
+def test__repr__():
+    assert repr(item2) == "Item('TV', 100000, 10)"
+    assert repr(item3) == "Item('Keyboard', 5000, 5)"
+
+
+def test__str__():
+    assert repr(item2) == "Item('TV', 100000, 10)"
+    assert repr(item3) == "Item('Keyboard', 5000, 5)"
