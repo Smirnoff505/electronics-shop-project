@@ -21,6 +21,12 @@ class Item:
         self.price = price
         self.quantity = quantity
 
+    def __repr__(self):
+        return f'{self.__class__.__name__}{self.__name, self.price, self.quantity}'
+
+    def __str__(self):
+        return f"{self.__name}"
+
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
@@ -43,7 +49,6 @@ class Item:
             for row in reader:
                 new_instance = cls(row['name'], float(row['price']), int(row['quantity']))
                 cls.all.append(new_instance)
-
 
     @staticmethod
     def string_to_number(number_str: str):
