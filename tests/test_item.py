@@ -41,5 +41,5 @@ def test__repr__():
 
 
 def test__str__():
-    assert repr(item2) == "Item('TV', 100000, 10)"
-    assert repr(item3) == "Item('Keyboard', 5000, 5)"
+    assert str(item2) == 'TV'
+    assert str(item3) == 'Keyboard'
