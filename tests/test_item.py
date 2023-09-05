@@ -2,6 +2,7 @@
 import pytest
 
 from src.item import Item
+from src.phone import Phone
 
 Item.pay_rate = 0.8
 
@@ -35,6 +36,10 @@ item2 = Item("TV", 100000, 10)
 item3 = Item("Keyboard", 5000, 5)
 
 
+def test_name():
+    assert item3.name == "Keyboard"
+
+
 def test__repr__():
     assert repr(item2) == "Item('TV', 100000, 10)"
     assert repr(item3) == "Item('Keyboard', 5000, 5)"
@@ -43,3 +48,13 @@ def test__repr__():
 def test__str__():
     assert str(item2) == 'TV'
     assert str(item3) == 'Keyboard'
+
+
+phone1 = Phone("iPhone 14", 120_000, 5, 2)
+item5 = Item("Смартфон", 10000, 20)
+
+
+def test__add__():
+    assert item5 + phone1 == 25
+    assert phone1 + phone1 == 10
+    assert item5 + 50 == ValueError
