@@ -57,4 +57,5 @@ item5 = Item("Смартфон", 10000, 20)
 def test__add__():
     assert item5 + phone1 == 25
     assert phone1 + phone1 == 10
-    assert item5 + 50 == ValueError
+    with pytest.raises(ValueError):
+        assert item5 + 50
