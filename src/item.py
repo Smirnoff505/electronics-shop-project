@@ -80,6 +80,3 @@ class Item:
             self.__name = product_name[:10]
         else:
             self.__name = product_name
-
-
-Item.instantiate_from_csv()
