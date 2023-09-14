@@ -14,6 +14,7 @@ class Item:
     """
     pay_rate = 1.0
     all = []
+    file = 'items.csv'
 
     def __init__(self, name: str, price: float, quantity: int) -> None:
         """
@@ -29,7 +30,7 @@ class Item:
         super().__init__()
 
     def __repr__(self):
-        return f'{self.__class__.__name__}({self.__name, self.price, self.quantity})'
+        return f'{self.__class__.__name__}{self.__name, self.price, self.quantity}'
 
     def __str__(self):
         return f"{self.__name}"
@@ -54,11 +55,11 @@ class Item:
         self.price = self.pay_rate * self.price
 
     @classmethod
-    def instantiate_from_csv(cls):
-        file = '../src/items.csv'
-        if not os.path.exists(file):
+    def instantiate_from_csv(cls, file_name=file):
+        path_to_dir = os.path.join(os.path.dirname(__file__), file_name)
+        if not os.path.exists(path_to_dir):
             raise FileNotFoundError('Отсутствует файл item.csv')
-        with open('../src/items.csv', newline='', encoding='windows-1251') as csvfile:
+        with open(path_to_dir, newline='', encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if not 'name' in row or not 'price' in row or not 'quantity' in row:
