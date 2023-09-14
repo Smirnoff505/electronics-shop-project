@@ -30,7 +30,11 @@ def test_string_to_number():
 def test_instantiate_from_csv():
     Item.instantiate_from_csv()
     assert len(Item.all) == 5
-
+    with pytest.raises(FileNotFoundError):
+        assert Item.instantiate_from_csv('items_.csv')
+    # with pytest.raises(InstantiateCSVError):
+    #     assert Item.instantiate_from_csv('items without s.csv')
+    #
 
 item2 = Item("TV", 100000, 10)
 item3 = Item("Keyboard", 5000, 5)
